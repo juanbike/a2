@@ -1,10 +1,7 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateJuntaDto } from './create-junta.dto';
 import { IsNotEmpty, IsString } from 'class-validator';
-
-
 export class UpdateJuntaDto extends PartialType(CreateJuntaDto) {
-  
   @IsNotEmpty()
   @IsString()
   tipo_extremos: string;

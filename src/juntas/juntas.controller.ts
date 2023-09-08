@@ -20,6 +20,7 @@ export class JuntasController {
     return this.juntasService.create(createJuntaDto);
   }
 
+  /*
   @Get()
   findAll() {
     return this.juntasService.findAll();
@@ -39,4 +40,5 @@ export class JuntasController {
   remove(@Param('id') id: string) {
     return this.juntasService.remove(+id);
   }
+  */
 }
