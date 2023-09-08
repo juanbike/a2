@@ -1,9 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JuntasModule } from './juntas/juntas.module';
-import { Junta } from './juntas/entities/junta.entity';
 import { JuntasController } from './juntas/juntas.controller';
-import { JuntasService } from './juntas/juntas.service';
 
 
 @Module({
@@ -22,6 +21,6 @@ import { JuntasService } from './juntas/juntas.service';
    
   ],
   controllers: [JuntasController],
-  providers: [JuntasService],
+  providers: [],
 })
 export class AppModule {}

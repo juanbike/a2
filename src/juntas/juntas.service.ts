@@ -27,11 +27,12 @@ export class JuntasService {
     return await this.juntaRepository.save(nuevaJunta);
   }
 
-  /*
-  findAll() {
-    return `This action returns all juntas`;
+  
+  async findAll(): Promise<Junta[]> {
+    return await this.juntaRepository.find();
   }
 
+  /*
   findOne(id: number) {
     return `This action returns a #${id} junta`;
   }

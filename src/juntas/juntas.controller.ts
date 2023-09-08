@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Controller,
   Get,
@@ -20,12 +21,13 @@ export class JuntasController {
     return this.juntasService.create(createJuntaDto);
   }
 
-  /*
+  
   @Get()
   findAll() {
     return this.juntasService.findAll();
   }
 
+  /*
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.juntasService.findOne(+id);
