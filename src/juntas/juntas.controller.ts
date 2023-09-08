@@ -11,6 +11,7 @@ import {
 import { JuntasService } from './juntas.service';
 import { CreateJuntaDto } from './dto/create-junta.dto';
 import { UpdateJuntaDto } from './dto/update-junta.dto';
+import { Junta } from './entities/junta.entity';
 
 @Controller('api/juntas')
 export class JuntasController {
@@ -27,17 +28,19 @@ export class JuntasController {
     return this.juntasService.findAll();
   }
 
-  /*
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.juntasService.findOne(+id);
+  findById(@Param('id') id: number): Promise<Junta> {
+    return this.juntasService.findById(id);
   }
+
+   
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateJuntaDto: UpdateJuntaDto) {
     return this.juntasService.update(+id, updateJuntaDto);
   }
 
+  /*
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.juntasService.remove(+id);
