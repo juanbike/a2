@@ -40,10 +40,10 @@ export class JuntasController {
     return this.juntasService.update(+id, updateJuntaDto);
   }
 
-  /*
+  
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.juntasService.remove(+id);
   }
-  */
+  
 }

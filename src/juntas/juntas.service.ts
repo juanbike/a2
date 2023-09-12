@@ -59,6 +59,16 @@ export class JuntasService {
   }
 
 
+  //Eliminar Junta
+  async remove(id: number): Promise<void> {
+    const junta = await this.juntaRepository.findOneBy({id: id});
+
+    if (!junta) {
+      throw new NotFoundException(`Junta con ID ${id} no encontrado`);
+    }
+
+    await this.juntaRepository.remove(junta);
+  }
 
  /*
   update(id: number, updateJuntaDto: UpdateJuntaDto) {
