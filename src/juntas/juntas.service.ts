@@ -3,7 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateJuntaDto } from './dto/create-junta.dto';
-import { UpdateJuntaDto } from './dto/update-junta.dto';
+//import { UpdateJuntaDto } from './dto/update-junta.dto';
 import { Junta } from './entities/junta.entity';
 
 @Injectable()
@@ -68,6 +68,12 @@ export class JuntasService {
     }
 
     await this.juntaRepository.remove(junta);
+  }
+
+
+//Elimina todas las juntas
+  async deleteAllJuntas(): Promise<void> {
+    await this.juntaRepository.delete({});
   }
 
  /*
