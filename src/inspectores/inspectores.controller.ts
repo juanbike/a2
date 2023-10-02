@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Controller,
   Get,
@@ -10,6 +11,7 @@ import {
 import { InspectoresService } from './inspectores.service';
 import { CreateInspectoreDto } from './dto/create-inspectore.dto';
 import { UpdateInspectoreDto } from './dto/update-inspectore.dto';
+import { Inspectore} from './entities/inspectore.entity'
 
 @Controller('inspectores')
 export class InspectoresController {
@@ -20,23 +22,21 @@ export class InspectoresController {
     return this.inspectoresService.create(createInspectoreDto);
   }
 
+
+  // Recuperamos todos los inspectores
   @Get()
   findAll() {
     return this.inspectoresService.findAll();
   }
 
+  // Recuperamos un inspector por su id
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.inspectoresService.findOne(+id);
+  findById(@Param('id') id: number): Promise<Inspectore> {
+    return this.inspectoresService.findById(id);
   }
 
-  /*
-  @Get(':id')
-  findById(@Param('id') id: number): Promise<Junta> {
-    return this.juntasService.findById(id);
-  }
-*/
-
+  //Actualizamos un inspector por su ID
+  
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -45,8 +45,16 @@ export class InspectoresController {
     return this.inspectoresService.update(+id, updateInspectoreDto);
   }
 
+  // Eliminar un inspector por su Id
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.inspectoresService.remove(+id);
   }
+
+  //Elimina toda
+  async deleteAllJuntas(): Promise<void> {
+    await this.juntaRepository.delete({});
+  }
+
+
 }

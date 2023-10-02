@@ -27,7 +27,7 @@ export class Inspectore {
   @Column({length:15})
   @IsNotEmpty()
   @IsString()
-  Apellido: string;
+  apellido: string;
 
   @Column('text', {nullable: true})
   @Column({length:25})
@@ -42,6 +42,11 @@ export class Inspectore {
   @IsString()
   @IsPhoneNumber()
   telefono2: string;
+
+  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  fecha: Date;
+
+
 
 
   
