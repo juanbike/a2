@@ -3,6 +3,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JuntasModule } from './juntas/juntas.module';
 import { JuntasController } from './juntas/juntas.controller';
+import { ProyectosModule } from './proyectos/proyectos.module';
+import { SoldadoresModule } from './soldadores/soldadores.module';
+import { InspectoresModule } from './inspectores/inspectores.module';
 
 
 @Module({
@@ -17,7 +20,10 @@ import { JuntasController } from './juntas/juntas.controller';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // Esto crea automáticamente tablas en la base de datos (solo para desarrollo)
     }),
-    JuntasModule
+    JuntasModule,
+    ProyectosModule,
+    SoldadoresModule,
+    InspectoresModule
    
   ],
   controllers: [JuntasController],

@@ -18,9 +18,21 @@ export class JuntasService {
 
   async create(createJuntaDto: CreateJuntaDto): Promise<Junta> {
     const nuevaJunta = new Junta();
+    nuevaJunta.nominal = createJuntaDto.nominal;
+    nuevaJunta.nominal1 = createJuntaDto.nominal1;
+    nuevaJunta.lineaOSistema = createJuntaDto.lineaOSistema;
+    nuevaJunta.especificacion = createJuntaDto.especificacion;
+    nuevaJunta.schedule = createJuntaDto.schedule;
     nuevaJunta.tipo_extremos = createJuntaDto.tipo_extremos;
     nuevaJunta.tipo_material = createJuntaDto.tipo_material;
     nuevaJunta.material = createJuntaDto.material;
+    nuevaJunta.diam_inch_contabilizadas = createJuntaDto.diam_inch_contabilizadas;
+    nuevaJunta.factor_pulgadas_diametrales = createJuntaDto.factor_pulgadas_diametrales;
+    nuevaJunta.pulgadas_diametrales = createJuntaDto.pulgadas_diametrales;
+    nuevaJunta.proyectID = createJuntaDto.proyectID;
+    nuevaJunta.usuarioID = createJuntaDto.usuarioID;
+
+
 
     return await this.juntaRepository.save(nuevaJunta);
   }
@@ -76,13 +88,5 @@ export class JuntasService {
     await this.juntaRepository.delete({});
   }
 
- /*
-  update(id: number, updateJuntaDto: UpdateJuntaDto) {
-    return `This action updates a #${id} junta`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} junta`;
-  }
-  */
+ 
 }
