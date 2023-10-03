@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 import {
   Controller,
@@ -10,13 +11,15 @@ import {
 } from '@nestjs/common';
 import { InspectoresService } from './inspectores.service';
 import { CreateInspectoreDto } from './dto/create-inspectore.dto';
-import { UpdateInspectoreDto } from './dto/update-inspectore.dto';
-import { Inspectore} from './entities/inspectore.entity'
 
-@Controller('inspectores')
+import { Inspectore} from './entities/inspectore.entity'
+import { updateInspectoreDto } from './dto/update-inspectore.dto';
+
+@Controller('api/inspectores/')
 export class InspectoresController {
   constructor(private readonly inspectoresService: InspectoresService) {}
 
+  // Creamos un inspector
   @Post()
   create(@Body() createInspectoreDto: CreateInspectoreDto) {
     return this.inspectoresService.create(createInspectoreDto);
@@ -40,7 +43,7 @@ export class InspectoresController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateInspectoreDto: UpdateInspectoreDto,
+    @Body() updateInspectoreDto: updateInspectoreDto,
   ) {
     return this.inspectoresService.update(+id, updateInspectoreDto);
   }
@@ -51,9 +54,10 @@ export class InspectoresController {
     return this.inspectoresService.remove(+id);
   }
 
-  //Elimina toda
-  async deleteAllJuntas(): Promise<void> {
-    await this.juntaRepository.delete({});
+  //Elimina todos los inspectores
+  @Delete()
+  deleteAllInspectores() {
+     this.inspectoresService.deleteAllInspectores();
   }
 
 

@@ -5,6 +5,7 @@ import { JuntasModule } from './juntas/juntas.module';
 import { JuntasController } from './juntas/juntas.controller';
 import { ProyectosModule } from './proyectos/proyectos.module';
 import { SoldadoresModule } from './soldadores/soldadores.module';
+import { InspectoresModule } from './inspectores/inspectores.module';
 
 
 
@@ -24,10 +25,13 @@ import { SoldadoresModule } from './soldadores/soldadores.module';
     JuntasModule,
     ProyectosModule,
     SoldadoresModule,
+    InspectoresModule
+    
    
    
   ],
   controllers: [JuntasController],
   providers: [],
+  
 })
 export class AppModule {}

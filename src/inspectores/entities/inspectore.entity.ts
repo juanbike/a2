@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -11,33 +12,35 @@ import {
   Min,
   IsPositive,
   IsEmail,
-  IsPhoneNumber
+  IsPhoneNumber,
 } from 'class-validator';
+@Entity()
 export class Inspectore {
-    @PrimaryGeneratedColumn()
-    id: number;
+ 
+  @PrimaryGeneratedColumn()
+  id: number;
 
-@Column('text', {nullable: true})
-  @Column({length:15})
+  @Column('text', { nullable: true })
+  @Column({ length: 15 })
   @IsNotEmpty()
   @IsString()
   nombre: string;
 
-  @Column('text', {nullable: true})
-  @Column({length:15})
+  @Column('text', { nullable: true })
+  @Column({ length: 15 })
   @IsNotEmpty()
   @IsString()
   apellido: string;
 
-  @Column('text', {nullable: true})
-  @Column({length:25})
+  @Column('text', { nullable: true })
+  @Column({ length: 25 })
   @IsNotEmpty()
   @IsString()
   @IsPhoneNumber()
   telefono1: string;
 
-  @Column('text', {nullable: true})
-  @Column({length:25})
+  @Column('text', { nullable: true })
+  @Column({ length: 25 })
   @IsNotEmpty()
   @IsString()
   @IsPhoneNumber()
@@ -45,12 +48,4 @@ export class Inspectore {
 
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   fecha: Date;
-
-
-
-
-  
-    
-  
-
 }

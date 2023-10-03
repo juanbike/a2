@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IsNotEmpty, IsString, IsPhoneNumber } from 'class-validator';
 export class CreateInspectoreDto {
   
@@ -8,7 +9,7 @@ export class CreateInspectoreDto {
   
   @IsNotEmpty()
   @IsString()
-  Apellido: string;
+  apellido: string;
 
   
   @IsNotEmpty()

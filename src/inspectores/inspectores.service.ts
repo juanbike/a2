@@ -3,7 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateInspectoreDto } from './dto/create-inspectore.dto';
-import { UpdateInspectoreDto } from './dto/update-inspectore.dto';
+//import {updateInspectoreDto} from './dto/update-inspectore.dto';
 import { Inspectore } from './entities/inspectore.entity';
 
 @Injectable()
@@ -15,18 +15,13 @@ export class InspectoresService {
   ) {}
 
 
-  /*
-  create(createInspectoreDto: CreateInspectoreDto) {
-    return 'This action adds a new inspectore';
-  }
-*/
-
+  
 //Creamos un inspector
 
 async create(createInpectoreDto: CreateInspectoreDto): Promise<Inspectore> {
   const nuevoInspector = new Inspectore();
   nuevoInspector.nombre = createInpectoreDto.nombre;
-  nuevoInspector.apellido=  createInpectoreDto.Apellido;
+  nuevoInspector.apellido=  createInpectoreDto.apellido;
   nuevoInspector.telefono1 = createInpectoreDto.telefono1;
   nuevoInspector.telefono2 =   createInpectoreDto.telefono2 ;
 
@@ -56,11 +51,11 @@ async findById(id: number): Promise<Inspectore> {
 // Actualizar inspector
 
 
-async update(id: number, UpdateInspectoreDto: Partial<Inspectore>): Promise<Inspectore> {
+async update(id: number,  UpdateInspectoreDto: Partial<Inspectore>): Promise<Inspectore> {
   const junta = await this.inspectoresRepository.findOneBy({id: id})
 
   if (!junta) {
-    throw new NotFoundException(`El inspecto con el ID ${id} no se encuentra`);
+    throw new NotFoundException(`El inspector con el ID ${id} no se encuentra`);
   }
 
   // Actualiza los campos del usuario con los datos proporcionados
@@ -78,13 +73,17 @@ async remove(id: number): Promise<void> {
   const inspector = await this.inspectoresRepository.findOneBy({id: id});
 
   if (!inspector) {
-    throw new NotFoundException(`El inspecto con el ID ${id} no se encuentra`);
+    throw new NotFoundException(`El inspector con el ID ${id} no se encuentra`);
    }
 
   await this.inspectoresRepository.remove(inspector);
 }
 
 
+//Elimina todas las juntas
+async deleteAllInspectores(): Promise<void> {
+  await this.inspectoresRepository.delete({});
+}
 
 
 }
