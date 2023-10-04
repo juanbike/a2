@@ -1,26 +1,84 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateProyectoDto } from './dto/create-proyecto.dto';
-import { UpdateProyectoDto } from './dto/update-proyecto.dto';
+
+import { Proyecto } from './entities/proyecto.entity';
 
 @Injectable()
 export class ProyectosService {
-  create(createProyectoDto: CreateProyectoDto) {
-    return 'This action adds a new proyecto';
+  constructor(
+    @InjectRepository(Proyecto)
+    private readonly proyectosRepository: Repository<Proyecto>,
+  ) {}
+
+  //Creamos un proyecto
+  async create(createProyectoDto: CreateProyectoDto): Promise<Proyecto> {
+    const nuevoProyecto = new Proyecto();
+    nuevoProyecto.nombreProyecto = createProyectoDto.nombreProyecto;
+    nuevoProyecto.Cliente = createProyectoDto.Cliente;
+    nuevoProyecto.titulo = createProyectoDto.titulo;
+    nuevoProyecto.revision = createProyectoDto.revision;
+    nuevoProyecto.tipo = createProyectoDto.tipo;
+    nuevoProyecto.elaboradoPor = createProyectoDto.elaboradoPor;
+    return await this.proyectosRepository.save(nuevoProyecto);
   }
 
-  findAll() {
-    return `This action returns all proyectos`;
+  //Recuperamos todos los proyectos
+
+  async findAll(): Promise<Proyecto[]> {
+    return await this.proyectosRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} proyecto`;
+  //Recuperamos un proyecto por su Id
+
+  async findById(id: number): Promise<Proyecto> {
+    const proyecto = await this.proyectosRepository.findOneBy({ id: id });
+
+    if (!proyecto) {
+      throw new NotFoundException(
+        `El inspector con el ID ${id} no se encuentra`,
+      );
+    }
+
+    return proyecto;
   }
 
-  update(id: number, updateProyectoDto: UpdateProyectoDto) {
-    return `This action updates a #${id} proyecto`;
+  //Actualizamos un proyecto
+
+  async update(
+    id: number,
+    UpdateProyectoDto: Partial<Proyecto>,
+  ): Promise<Proyecto> {
+    const proyecto = await this.proyectosRepository.findOneBy({ id: id });
+
+    if (!proyecto) {
+      throw new NotFoundException(
+        `El inspector con el ID ${id} no se encuentra`,
+      );
+    }
+
+    // Actualiza los campos del usuario con los datos proporcionados
+    this.proyectosRepository.merge(proyecto, UpdateProyectoDto);
+
+    return this.proyectosRepository.save(proyecto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} proyecto`;
+  // Eliminar un proyecto por su Id
+  async remove(id: number): Promise<void> {
+    const proyecto = await this.proyectosRepository.findOneBy({ id: id });
+
+    if (!proyecto) {
+      throw new NotFoundException(
+        `El inspector con el ID ${id} no se encuentra`,
+      );
+    }
+
+    await this.proyectosRepository.remove(proyecto);
+  }
+
+  //Elimina todos los proyectos
+  async deleteAllProyectos(): Promise<void> {
+    await this.proyectosRepository.delete({});
   }
 }

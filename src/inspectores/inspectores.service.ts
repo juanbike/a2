@@ -3,7 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateInspectoreDto } from './dto/create-inspectore.dto';
-//import {updateInspectoreDto} from './dto/update-inspectore.dto';
+
 import { Inspectore } from './entities/inspectore.entity';
 
 @Injectable()

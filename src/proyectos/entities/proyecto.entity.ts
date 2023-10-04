@@ -8,11 +8,7 @@ import {
 import {
   IsNotEmpty,
   IsString,
-  IsNumber,
-  Min,
-  IsPositive,
-  IsEmail,
-  IsPhoneNumber,
+  
 } from 'class-validator';
 @Entity()
 export class Proyecto {
@@ -35,21 +31,24 @@ export class Proyecto {
   @Column({ length: 70})
   @IsNotEmpty()
   @IsString()
-  @IsPhoneNumber()
   titulo: string;
 
   @Column('text', { nullable: true })
   @Column({ length: 25 })
   @IsNotEmpty()
   @IsString()
-  @IsPhoneNumber()
   revision: string;
+
+  @Column('text', { nullable: true })
+  @Column({ length: 25 })
+  @IsNotEmpty()
+  @IsString()
+  tipo: string;
 
   @Column('text', { nullable: true })
   @Column({ length: 60 })
   @IsNotEmpty()
   @IsString()
-  @IsPhoneNumber()
   elaboradoPor: string;
 
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
