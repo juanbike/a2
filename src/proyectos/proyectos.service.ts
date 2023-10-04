@@ -1,5 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { validate } from 'class-validator';
 import { Repository } from 'typeorm';
 import { CreateProyectoDto } from './dto/create-proyecto.dto';
 
@@ -14,6 +20,17 @@ export class ProyectosService {
 
   //Creamos un proyecto
   async create(createProyectoDto: CreateProyectoDto): Promise<Proyecto> {
+    // Validar el objeto CreateProductDto
+    const errors = await validate(createProyectoDto);
+
+    // Si hay errores de validación, devolverlos en una respuesta HTTP 400 Bad Request
+    if (errors.length > 0) {
+      throw new HttpException(
+        { message: 'Error de validación', errors },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
     const nuevoProyecto = new Proyecto();
     nuevoProyecto.nombreProyecto = createProyectoDto.nombreProyecto;
     nuevoProyecto.cliente = createProyectoDto.cliente;
