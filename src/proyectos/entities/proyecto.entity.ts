@@ -25,7 +25,7 @@ export class Proyecto {
   @Column({ length: 70 })
   @IsNotEmpty()
   @IsString()
-  Cliente: string;
+  cliente: string;
 
   @Column('text', { nullable: true })
   @Column({ length: 70})

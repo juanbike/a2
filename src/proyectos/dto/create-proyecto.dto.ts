@@ -7,7 +7,7 @@ export class CreateProyectoDto {
 
   @IsNotEmpty()
   @IsString()
-  Cliente: string;
+  cliente: string;
 
   @IsNotEmpty()
   @IsString()

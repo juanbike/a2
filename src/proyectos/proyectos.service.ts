@@ -16,7 +16,7 @@ export class ProyectosService {
   async create(createProyectoDto: CreateProyectoDto): Promise<Proyecto> {
     const nuevoProyecto = new Proyecto();
     nuevoProyecto.nombreProyecto = createProyectoDto.nombreProyecto;
-    nuevoProyecto.Cliente = createProyectoDto.Cliente;
+    nuevoProyecto.cliente = createProyectoDto.cliente;
     nuevoProyecto.titulo = createProyectoDto.titulo;
     nuevoProyecto.revision = createProyectoDto.revision;
     nuevoProyecto.tipo = createProyectoDto.tipo;

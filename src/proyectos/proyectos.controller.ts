@@ -22,7 +22,6 @@ export class ProyectosController {
     return this.proyectosService.create(createProyectoDto);
   }
 
-  
   //Recuperamos todos los proyectos
 
   @Get()
@@ -30,7 +29,6 @@ export class ProyectosController {
     return this.proyectosService.findAll();
   }
 
-  
   //Recuperamos un proyecto por su Id
   @Get(':id')
   findById(@Param('id') id: number): Promise<Proyecto> {
@@ -45,7 +43,6 @@ export class ProyectosController {
   ) {
     return this.proyectosService.update(+id, updateInspectoreDto);
   }
-  
 
   // Eliminar un proyecto por su Id
   @Delete(':id')
@@ -57,7 +54,6 @@ export class ProyectosController {
 
   @Delete()
   deleteAllProyectos() {
-     this.proyectosService.deleteAllProyectos();
+    this.proyectosService.deleteAllProyectos();
   }
-
 }

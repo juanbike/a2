@@ -9,7 +9,7 @@ export class UpdateProyectoDto extends PartialType(CreateProyectoDto) {
 
   @IsNotEmpty()
   @IsString()
-  Cliente: string;
+  cliente: string;
 
   @IsNotEmpty()
   @IsString()
