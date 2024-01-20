@@ -3,9 +3,7 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeor
 import {
   IsNotEmpty,
   IsString,
-  IsNumber,
-  Min,
-  IsPositive,
+  Allow,
 } from 'class-validator';
 
 @Entity()
@@ -29,7 +27,7 @@ export class Junta {
   nominal1: string;
 
   @Column('text', {nullable: true})
-  @Column({length:70})
+  @Column({length:150})
   @IsNotEmpty()
   @IsString()
   lineaOSistema: string;
@@ -86,17 +84,19 @@ export class Junta {
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   fecha: Date;
 
+  @Allow()
   @Column('text', {nullable: true})
   @Column({length:7})
   @IsNotEmpty()
   @IsString()
   proyectID: string;
 
+  @Allow()
   @Column('text', {nullable: true})
   @Column({length:7})
   @IsNotEmpty()
   @IsString()
-  usuarioID: string;
+  usuarioID: string; // El ID del usuario que creó el proyecto
 
 
 }

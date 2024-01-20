@@ -20,7 +20,7 @@ export class UpdateSoldadoreDto extends PartialType(CreateSoldadoreDto) {
   telefono1: string;
 
   
-  @IsNotEmpty()
+  
   @IsString()
   @IsPhoneNumber()
   telefono2: string;

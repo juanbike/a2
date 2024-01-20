@@ -32,19 +32,46 @@ export class Soldadore {
   @IsString()
   apellido: string;
 
-  @Column('text', { nullable: true })
-  @Column({ length: 25 })
-  @IsNotEmpty()
-  @IsString()
-  @IsPhoneNumber()
-  telefono1: string;
 
-  @Column('text', { nullable: true })
-  @Column({ length: 25 })
+
+ @Column('text', { nullable: false })
+  @Column({ length: 11 })
   @IsNotEmpty()
   @IsString()
-  @IsPhoneNumber()
-  telefono2: string;
+  identificacion: string;
+  
+  
+@Column('text', { nullable: false })
+  @Column({ length: 10 })
+  @IsNotEmpty()
+  @IsString()
+  estampa: string;  
+  
+
+@Column('text', { nullable: false })
+  @Column({ length: 6 })
+  @IsNotEmpty()
+  @IsString()
+  valores: string;
+  
+@Column('text', { nullable: false })
+  @Column({ length: 4 })
+  @IsNotEmpty()
+  @IsString()
+  calificacion: string;  
+
+@Column('text', { nullable: false })
+  @Column({ length: 6 })
+  @IsNotEmpty()
+  @IsString()
+  baseMeal: string;
+  
+@Column('text', { nullable: false })
+  @Column({ length: 20 })
+  @IsNotEmpty()
+  @IsString()
+  numeroP: string;  
+  
 
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   fecha: Date;

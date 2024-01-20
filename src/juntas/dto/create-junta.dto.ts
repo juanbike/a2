@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, Allow } from 'class-validator';
 
 export class CreateJuntaDto {
   
@@ -47,12 +47,12 @@ export class CreateJuntaDto {
   @IsString()
   pulgadas_diametrales: string;
 
-  
+  @Allow()
   @IsNotEmpty()
   @IsString()
   proyectID: string;
 
-  
+  @Allow()
   @IsNotEmpty()
   @IsString()
   usuarioID: string;
