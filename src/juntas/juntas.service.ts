@@ -20,7 +20,7 @@ export class JuntasService {
     const nuevaJunta = new Junta();
     nuevaJunta.nominal = createJuntaDto.nominal;
     nuevaJunta.nominal1 = createJuntaDto.nominal1;
-    nuevaJunta.lineaOSistema = createJuntaDto.lineaOSistema;
+    nuevaJunta.linea = createJuntaDto.linea;
     nuevaJunta.especificacion = createJuntaDto.especificacion;
     nuevaJunta.schedule = createJuntaDto.schedule;
     nuevaJunta.tipo_extremos = createJuntaDto.tipo_extremos;

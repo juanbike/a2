@@ -1,61 +1,62 @@
 /* eslint-disable prettier/prettier */
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateJuntaDto } from './create-junta.dto';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { Allow, IsNotEmpty, IsString } from 'class-validator';
 export class UpdateJuntaDto extends PartialType(CreateJuntaDto) {
 
-  
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo  nominal no puede estar vacio' })
   @IsString()
   nominal: string;
 
-
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo  nominal1 no puede estar vacio' })
   @IsString()
   nominal1: string;
 
-  @IsNotEmpty()
+  
+  @IsNotEmpty({ message: 'El campo  linea no puede estar vacio' })
   @IsString()
-  lineaOSistema: string;
+  linea: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo  especificacion no puede estar vacio' })
   @IsString()
   especificacion: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo   schedule no puede estar vacio' })
   @IsString()
   schedule: string;
-
-  @IsNotEmpty()
+ 
+  @IsNotEmpty({ message: 'El campo   tipo_extremos no puede estar vacio' })
   @IsString()
   tipo_extremos: string;
 
-  @IsNotEmpty()
+ 
+  @IsNotEmpty({ message: 'El campo   tipo_material no puede estar vacio' })
   @IsString()
   tipo_material: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo   material no puede estar vacio' })
   @IsString()
   material: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo   diam_inch_contabilizadas no puede estar vacio' })
   @IsString()
   diam_inch_contabilizadas: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo  factor_pulgadas_diametrales no puede estar vacio' })
   @IsString()
   factor_pulgadas_diametrales: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo  pulgadas_diametrales no puede estar vacio' })
   @IsString()
   pulgadas_diametrales: string;
 
-  @IsNotEmpty()
+  @Allow()
+  @IsNotEmpty({ message: 'El campo  proyectID no puede estar vacio' })
   @IsString()
   proyectID: string;
-
   
-  @IsNotEmpty()
+  @Allow()
+  @IsNotEmpty({ message: 'El campo  usuarioID no puede estar vacio' })
   @IsString()
   usuarioID: string;
 

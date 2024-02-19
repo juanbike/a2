@@ -1,78 +1,51 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
     CreateDateColumn,
+    UpdateDateColumn,
+    DeleteDateColumn,
   } from 'typeorm';
-  import {
-    IsNotEmpty,
-    IsString,
-    IsNumber,
-    Min,
-    IsPositive,
-    IsEmail,
-    IsPhoneNumber,
-  } from 'class-validator';
-  @Entity()
+  
+  @Entity({ name:'soldadores' })
 export class Soldadore {
-    @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('text', { nullable: true })
-  @Column({ length: 15 })
-  @IsNotEmpty()
-  @IsString()
+  @Column({ name: 'nombre', length: 25, nullable: false })
   nombre: string;
 
-  @Column('text', { nullable: true })
-  @Column({ length: 15 })
-  @IsNotEmpty()
-  @IsString()
+
+  @Column({ name: 'apellido', length: 25, nullable: false })
   apellido: string;
 
-
-
- @Column('text', { nullable: false })
-  @Column({ length: 11 })
-  @IsNotEmpty()
-  @IsString()
+  @Column({ name: 'identificacion', length: 18, nullable: false })
   identificacion: string;
-  
-  
-@Column('text', { nullable: false })
-  @Column({ length: 10 })
-  @IsNotEmpty()
-  @IsString()
-  estampa: string;  
-  
 
-@Column('text', { nullable: false })
-  @Column({ length: 6 })
-  @IsNotEmpty()
-  @IsString()
+  @Column({ name: 'valores', length: 20, nullable: false })
   valores: string;
-  
-@Column('text', { nullable: false })
-  @Column({ length: 4 })
-  @IsNotEmpty()
-  @IsString()
-  calificacion: string;  
 
-@Column('text', { nullable: false })
-  @Column({ length: 6 })
-  @IsNotEmpty()
-  @IsString()
-  baseMeal: string;
-  
-@Column('text', { nullable: false })
-  @Column({ length: 20 })
-  @IsNotEmpty()
-  @IsString()
-  numeroP: string;  
-  
 
-  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  fecha: Date;
+  @Column({ name: 'estampa', length: 20, nullable: false })
+  estampa: string;
+
+  @Column({ name: 'calificacion', length: 25, nullable: false })
+  calificacion: string;
+
+  @Column({ name: 'basemetal', length: 20, nullable: false })
+  basemetal: string;
+
+  @Column({ name: 'numerop', length: 25, nullable: false })
+  numerop: string;
+  
+  @CreateDateColumn({ name: 'create_at' })
+  createdAt: Date;
+  
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: string;
+
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: string;
+
 }

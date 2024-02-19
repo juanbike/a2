@@ -24,9 +24,13 @@ export class SoldadoresService {
     const nuevoSoldador = new Soldadore();
     nuevoSoldador.nombre = createSoldadoreDto.nombre;
     nuevoSoldador.apellido=  createSoldadoreDto.apellido;
-    nuevoSoldador.telefono1 = createSoldadoreDto.telefono1;
-    nuevoSoldador.telefono2 =   createSoldadoreDto.telefono2 ;
-  
+    nuevoSoldador.identificacion = createSoldadoreDto.identificacion;
+    nuevoSoldador.valores = createSoldadoreDto.valores;
+    nuevoSoldador.estampa = createSoldadoreDto.estampa;
+    nuevoSoldador.calificacion = createSoldadoreDto.calificacion;
+    nuevoSoldador.basemetal = createSoldadoreDto.basemetal;
+    nuevoSoldador.numerop = createSoldadoreDto.numerop;
+
     return await this.soldadoresRepository.save(nuevoSoldador);
   }
 

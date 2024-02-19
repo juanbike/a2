@@ -10,7 +10,7 @@ import {
   IsString,
   
 } from 'class-validator';
-@Entity()
+@Entity({ name:'proyectos' })
 export class Proyecto {
   @PrimaryGeneratedColumn()
   id: number;

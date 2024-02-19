@@ -2,7 +2,7 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateInspectoreDto } from './create-inspectore.dto';
 
-import { IsNotEmpty, IsString, IsPhoneNumber } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString} from 'class-validator';
 export class updateInspectoreDto extends PartialType(CreateInspectoreDto) {
      
   @IsNotEmpty()
@@ -10,20 +10,18 @@ export class updateInspectoreDto extends PartialType(CreateInspectoreDto) {
   nombre: string;
 
   
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo Apellido no puede estar vacio' })
   @IsString()
   Apellido: string;
 
   
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campoTelefono no puede estar vacio' })
   @IsString()
-  @IsPhoneNumber()
-  telefono1: string;
+ telefono1: string;
 
   
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  @IsPhoneNumber()
-  telefono2: string;
+   telefono2?: string;
 
 }

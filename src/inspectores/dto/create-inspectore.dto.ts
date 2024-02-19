@@ -1,27 +1,25 @@
 /* eslint-disable prettier/prettier */
-import { IsNotEmpty, IsString, IsPhoneNumber } from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional } from 'class-validator';
 export class CreateInspectoreDto {
   
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo Nombre no puede estar vacio' })
   @IsString()
   nombre: string;
 
   
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo Apellido no puede estar vacio' })
   @IsString()
   apellido: string;
 
   
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'El campo Telefono1 no puede estar vacio' })
   @IsString()
-  @IsPhoneNumber()
   telefono1: string;
 
   
-  @IsNotEmpty()
-  @IsString()
-  @IsPhoneNumber()
-  telefono2: string;
+  
+ @IsOptional()
+  telefono2?: string;
 
 
 }

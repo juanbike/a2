@@ -4,22 +4,22 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateInspectoreDto } from './dto/create-inspectore.dto';
 
-import { Inspectore } from './entities/inspectore.entity';
+import { Inspectores } from './entities/inspectore.entity';
 
 @Injectable()
 export class InspectoresService {
 
   constructor(
-    @InjectRepository(Inspectore)
-    private readonly inspectoresRepository: Repository<Inspectore>,
+    @InjectRepository(Inspectores)
+    private readonly inspectoresRepository: Repository<Inspectores>,
   ) {}
 
 
   
 //Creamos un inspector
 
-async create(createInpectoreDto: CreateInspectoreDto): Promise<Inspectore> {
-  const nuevoInspector = new Inspectore();
+async create(createInpectoreDto: CreateInspectoreDto): Promise<Inspectores> {
+  const nuevoInspector = new Inspectores();
   nuevoInspector.nombre = createInpectoreDto.nombre;
   nuevoInspector.apellido=  createInpectoreDto.apellido;
   nuevoInspector.telefono1 = createInpectoreDto.telefono1;
@@ -31,14 +31,14 @@ async create(createInpectoreDto: CreateInspectoreDto): Promise<Inspectore> {
 
 //Encontramos todos los inpectores
 
-async findAll(): Promise<Inspectore[]> {
+async findAll(): Promise<Inspectores[]> {
   return await this.inspectoresRepository.find();
 }
 
 
 //Recuperamos el inpector por id
 
-async findById(id: number): Promise<Inspectore> {
+async findById(id: number): Promise<Inspectores> {
   const inspector = await this.inspectoresRepository.findOneBy({id:id});
 
   if (!inspector) {
@@ -51,7 +51,7 @@ async findById(id: number): Promise<Inspectore> {
 // Actualizar inspector
 
 
-async update(id: number,  UpdateInspectoreDto: Partial<Inspectore>): Promise<Inspectore> {
+async update(id: number,  UpdateInspectoreDto: Partial<Inspectores>): Promise<Inspectores> {
   const junta = await this.inspectoresRepository.findOneBy({id: id})
 
   if (!junta) {

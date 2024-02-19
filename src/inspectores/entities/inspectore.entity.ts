@@ -4,48 +4,34 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
+  UpdateDateColumn
 } from 'typeorm';
-import {
-  IsNotEmpty,
-  IsString,
-  IsNumber,
-  Min,
-  IsPositive,
-  IsEmail,
-  IsPhoneNumber,
-} from 'class-validator';
-@Entity()
-export class Inspectore {
+
+@Entity({ name: 'inspectores' })
+export class Inspectores {
  
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('text', { nullable: true })
-  @Column({ length: 15 })
-  @IsNotEmpty()
-  @IsString()
+  @Column({ name: 'nombre', length: 25, nullable: false })
   nombre: string;
 
-  @Column('text', { nullable: true })
-  @Column({ length: 15 })
-  @IsNotEmpty()
-  @IsString()
+  @Column({ name: 'apellido', length: 25, nullable: false })
   apellido: string;
-
-  @Column('text', { nullable: true })
-  @Column({ length: 25 })
-  @IsNotEmpty()
-  @IsString()
-  @IsPhoneNumber()
+  
+  @Column({ name: 'telefono1', length: 25, nullable: false })
   telefono1: string;
 
-  @Column('text', { nullable: true })
-  @Column({ length: 25 })
-  @IsNotEmpty()
-  @IsString()
-  @IsPhoneNumber()
+  @Column({ name: 'telefono2', length: 25, nullable: false })
   telefono2: string;
+ 
+  @CreateDateColumn({ name: 'create_at' })
+  createdAt: Date;
+  
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: string;
 
-  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  fecha: Date;
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: string;
 }
