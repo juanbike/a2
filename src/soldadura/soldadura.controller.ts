@@ -14,6 +14,7 @@ export class SoldaduraController {
     return this.soldaduraService.create(createSoldaduraDto);
   }
 
+  //Recupera todas las soldaduras
   
   @Get()
   findAll() {

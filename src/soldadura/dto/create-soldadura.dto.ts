@@ -61,7 +61,9 @@ export class CreateSoldaduraDto {
     @IsString()
     wds: string;
 
-    @IsNotEmpty({ message: 'El campo  QRCODE no puede estar vacio' })
+    
+   // @IsNotEmpty({ message: 'El campo  QRCODE no puede estar vacio' })
     @IsString()
     qrcode: string;
+  
 }

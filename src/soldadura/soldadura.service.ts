@@ -33,19 +33,42 @@ export class SoldaduraService {
     nuevaSoldadura.pn2 = createSoldaduraDto.pn2;
     nuevaSoldadura.wds = createSoldaduraDto.wds;
     //Genera un código QR con los datos de la nueva soldadura y lo almacena en el campo qrcode de la nueva soldadura
+    /*
     qr.toDataURL(JSON.stringify(nuevaSoldadura), (err, url) => {
       nuevaSoldadura.qrcode = url;
     });
+*/
 
-    nuevaSoldadura.qrcode = createSoldaduraDto.qrcode;
+    const qrCodeData = JSON.stringify({
+      nro_junta: nuevaSoldadura.nro_junta,
+      tipo: nuevaSoldadura.tipo,
+      plano: nuevaSoldadura.plano,
+      hoja: nuevaSoldadura.hoja,
+      revision: nuevaSoldadura.revision,
+      area: nuevaSoldadura.area,
+      fase: nuevaSoldadura.fase,
+      linea: nuevaSoldadura.linea,
+      diametro: nuevaSoldadura.diametro,
+      espesor: nuevaSoldadura.espesor,
+      cedula: nuevaSoldadura.cedula,
+      pn1: nuevaSoldadura.pn1,
+      pn2: nuevaSoldadura.pn2,
+      wds: nuevaSoldadura.wds,
+      // Agrega otros campos del soldador según sea necesario
+    });
+
+    //nuevaSoldadura.qrcode = createSoldaduraDto.qrcode;
+
+    const qrCode = await qr.toDataURL(qrCodeData);
+
+    nuevaSoldadura.qrcode = qrCode;
 
     return await this.soldadaduraRepository.save(nuevaSoldadura);
   }
 
-  findAll() {
-    return `This action returns all soldadura`;
+  async findAll(): Promise<Soldadura[]> {
+    return await this.soldadaduraRepository.find();
   }
-
   findOne(id: number) {
     return `This action returns a #${id} soldadura`;
   }

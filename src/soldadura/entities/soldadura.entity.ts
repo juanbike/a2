@@ -56,7 +56,7 @@ export class Soldadura {
     @Column({ name: 'wds', length: 35, nullable: false })
     wds: string;
 
-    @Column({ name: 'qrcode', length: 50, nullable: false }) // Campo para almacenar el código QR como texto
+    @Column({ name: 'qrcode', type: 'text', nullable: true }) // Campo para almacenar el código QR como texto
     qrcode: string; // El código QR se almacenará como una cadena de texto
 
 
